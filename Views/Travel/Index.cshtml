@@ -1,0 +1,40 @@
+﻿@model Dictionary<int, Travel>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="container text-center">
+    <h1 class="text-center">Create Travel</h1>
+    <a class="btn btn-primary" asp-controller="Travel" asp-action="Create">ADD</a>
+</div>
+<h1 class="text-center">List of Travels</h1>
+<div class="container text-center">
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Period of travel </th>
+        <th>Start location</th>
+        <th>End location</th>
+        <th>Number of passengers</th>
+        <th>Guide</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Value.Name</td>
+            <td>@item.Value.Start_Date - @item.Value.End_Date</td>
+            <td>@item.Value.Start_Place</td>
+            <td>@item.Value.End_Place</td>
+            <td>@item.Value.Participants</td>
+            <td>@item.Value.Guide</td>
+            <td>
+                <a class="btn btn-primary" asp-action="Update" asp-route-id="@item.Value.Id">Edit</a>
+                <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Value.Id">Details</a>
+                <a class="btn btn-primary text-danger" asp-action="Delete" asp-route-id="@item.Value.Id">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+</div>
