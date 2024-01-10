@@ -1,4 +1,4 @@
-﻿@model Dictionary<int, Travel>
+﻿@model List<Travel>
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
@@ -23,16 +23,16 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>@item.Value.Name</td>
-            <td>@item.Value.Start_Date - @item.Value.End_Date</td>
-            <td>@item.Value.Start_Place</td>
-            <td>@item.Value.End_Place</td>
-            <td>@item.Value.Participants</td>
-            <td>@item.Value.Guide</td>
+            <td>@item.Name</td>
+            <td>@item.Start_Date - @item.End_Date</td>
+            <td>@item.Start_Place</td>
+            <td>@item.End_Place</td>
+            <td>@item.Participants</td>
+            <td>@item.Guide</td>
             <td>
-                <a class="btn btn-primary" asp-action="Update" asp-route-id="@item.Value.Id">Edit</a>
-                <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Value.Id">Details</a>
-                <a class="btn btn-primary text-danger" asp-action="Delete" asp-route-id="@item.Value.Id">Delete</a>
+                <a class="btn btn-primary" asp-action="Update" asp-route-id="@item.Id">Edit</a>
+                <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                <a class="btn btn-primary text-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
     }

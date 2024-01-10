@@ -5,14 +5,14 @@ namespace Laboratorium_nr3.Controllers
 {
     public class TravelController : Controller
     {
-        private readonly ITravelService _travelservice;
+        private readonly ITravelService _travelService;
         public TravelController(ITravelService travelService)
         {
-            _travelservice = travelService;
+            _travelService = travelService;
         }
         public IActionResult Index()
         {
-            return View(_travelservice.GetAll());
+            return View(_travelService.GetAll());
         }
         [HttpGet]
         public IActionResult Create()
@@ -24,7 +24,7 @@ namespace Laboratorium_nr3.Controllers
         {
             if (ModelState.IsValid)
             {
-                _travelservice.Add(model);
+                _travelService.Add(model);
                 return RedirectToAction("Index");
             }
             return View();
@@ -32,7 +32,7 @@ namespace Laboratorium_nr3.Controllers
         [HttpGet]
         public IActionResult Update(int id)
         {
-            return View(_travelservice.FindById(id));
+            return View(_travelService.FindById(id));
         }
 
         [HttpPost]
@@ -40,7 +40,7 @@ namespace Laboratorium_nr3.Controllers
         {
             if (ModelState.IsValid)
             {
-                _travelservice.Update(model);
+                _travelService.Update(model);
                 return RedirectToAction("Index");
             }
             return View();
@@ -48,7 +48,7 @@ namespace Laboratorium_nr3.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            var travelToDelete = _travelservice.FindById(id);
+            var travelToDelete = _travelService.FindById(id);
             if (travelToDelete == null)
             {
                 return NotFound();
@@ -60,19 +60,19 @@ namespace Laboratorium_nr3.Controllers
         [HttpPost]
         public IActionResult DeleteConfirmed(int id)
         {
-            var travelToDelete = _travelservice.FindById(id);
+            var travelToDelete = _travelService.FindById(id);
             if (travelToDelete == null)
             {
                 return NotFound();
             }
 
-            _travelservice.DeleteById(id);
+            _travelService.Delete(id);
             return RedirectToAction("Index");
         }
         [HttpGet]
         public IActionResult Details(int id)
         {
-            var travelDetails = _travelservice.FindById(id);
+            var travelDetails = _travelService.FindById(id);
             if (travelDetails == null)
             {
                 return NotFound();

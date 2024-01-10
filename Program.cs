@@ -1,4 +1,6 @@
 using Laboratorium_nr3.Models;
+using Data;
+using System.Xml.Linq;
 namespace Laboratorium_nr3
 {
     public class Program
@@ -9,7 +11,9 @@ namespace Laboratorium_nr3
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-            builder.Services.AddSingleton<ITravelService, MemoryTravelService>();
+           // builder.Services.AddSingleton<ITravelService, MemoryTravelService>();
+            builder.Services.AddDbContext<AppDbContext>();
+            builder.Services.AddTransient<ITravelService, EFTravelService>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

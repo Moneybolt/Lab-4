@@ -2,11 +2,10 @@
 {
     public interface ITravelService
     {
-        void Add(Travel travel);
+        int Add(Travel travel);
         void Update(Travel travel);
-        void DeleteById(int id);
+        void Delete(int id);
         Travel? FindById(int id);
-        Dictionary<int, Travel> GetAll();
-        
+        List<Travel> GetAll();
     }
 }
